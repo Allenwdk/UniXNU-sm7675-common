@@ -1,3 +1,3 @@
-# Ordered SoC-level XNU patches for SM7675 (cliffs). None yet: the uke board
-# series carries the validated set. Shared SoC patches move here as the device
-# series adopts the arch layer.
+# SoC platform patches for SM7675: PMGR power and SMP secondary bring-up.
+sheng-platform-power.patch
+native-smp-secondary.patch
