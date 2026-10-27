@@ -1,0 +1,11 @@
+"schema_version" = 2
+
+["soc"]
+"name" = "sm7675"
+"description" = "Qualcomm SM7675 (cliffs)"
+"source_repository" = "https://github.com/MiCode/Xiaomi_Kernel_OpenSource"
+"source_revision" = "5712080a4b0c0b1a879e6d145c601c649ddaddfd"
+
+
+["components"]
+"include" = ["ArmCpu", "ArmDTPlatform", "Adreno740", "AdrenoMetal"]
