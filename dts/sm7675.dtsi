@@ -1,28 +1,16 @@
 // SPDX-License-Identifier: BSD-3-Clause
-// Shared Qualcomm SM7675 (cliffs) resources, derived from the uke vendor_boot
-// device tree and the Xiaomi kernel sources at 5712080a. Board peripherals,
-// memory and reservations live in the device repository's dts/.
+// Shared Qualcomm SM7675 (cliffs) resources: the SoC controllers the common
+// ADT generator exports. Board memory, CPU selection and peripherals live in
+// the device repository's dts/. Derived from the uke vendor_boot device tree
+// and the Xiaomi kernel sources at 5712080a.
 / {
-    compatible = "qcom,cliffs";
-    #address-cells = <2>;
-    #size-cells = <2>;
-    interrupt-parent = <&gic>;
-
-    cpus {
-        #address-cells = <2>;
-        #size-cells = <0>;
-        timebase-frequency = <19200000>;
-        cpu0: cpu@0 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0>; };
-        cpu1: cpu@100 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x100>; };
-        cpu2: cpu@200 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x200>; };
-        cpu3: cpu@300 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x300>; };
-        cpu4: cpu@400 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x400>; };
-        cpu5: cpu@500 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x500>; };
-        cpu6: cpu@600 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x600>; };
-        cpu7: cpu@700 { device_type = "cpu"; compatible = "qcom,kryo"; reg = <0 0x700>; };
+    // UFS at 0x1d84000 lies below the arm-io window, so the node exists
+    // only for class matching; the driver takes its physical windows from
+    // the board's GccUfs.h.
+    ufs: ufshc {
+        compatible = "qcom,sm8550-ufshc";
+        unixnu,adt-name = "ufshc";
     };
-
-    psci { compatible = "arm,psci-1.0"; method = "smc"; };
 
     soc {
         compatible = "simple-bus";
@@ -38,13 +26,6 @@
             #address-cells = <0>;
             interrupt-controller;
             redistributor-stride = <0 0x40000>;
-        };
-
-        ufs: ufshc@1d84000 {
-            compatible = "qcom,ufshc";
-            unixnu,adt-name = "ufshc";
-            reg = <0 0x1d84000 0 0x3000>;
-            status = "disabled";
         };
 
         gpu: gpu@3d00000 {
