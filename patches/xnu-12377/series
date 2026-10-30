@@ -1,4 +1,5 @@
 # SM7675 SoC patches for xnu-12377, one per line in application order.
-# The xnu (12377) series starts empty: sheng-platform-power.patch and
-# native-smp-secondary.patch from patches/xnu/series must be re-based on
-# xnu-12377 first (tracked in docs/plans/ipados27.md).
+# The shared OS series' zzz-boot-progress.patch annotates the PMGR block this
+# first patch introduces; native-smp-secondary keeps the eight-core boot.
+sheng-platform-power.patch
+native-smp-secondary.patch
