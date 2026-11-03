@@ -26,3 +26,8 @@ and [component catalog](https://unixnu.com/reference/components).
 | `configs/` | Kernel configuration fragments |
 | `dts/sm7675.dtsi` | Shared hardware resources |
 | `patches/xnu/series` | Ordered SoC patches |
+
+
+## Uke GPU27 integration (2026-11-03)
+
+This SoC implementation is part of the user-accepted uke iPadOS27/24A446 GPU baseline, kernel CRC `90B6BC701210D9DB`. Shared GMU and SMMU operations support the board-provided gen7_11_0 firmware/windows and OPP policy. The user confirms prior boot, icons/widgets and Settings/Dock UI-restart symptoms resolved. Detailed image identities and scope belong to the device repository; long-run stress remains unmeasured.
